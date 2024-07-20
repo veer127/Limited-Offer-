@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limited Time Offer Banner</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="banner">
+        <div class="section">
+            <img src="3d-alarm.png" alt="Alarm Icon">
+            <p>LIMITED TIME OFFER</p>
+        </div>
+        <div class="section">
+            <p>Ends in: <span id="countdown" class="countdown"></span></p>
+        </div>
+        <div class="section">
+            <p><b> GET 10% OFF </b>  &nbsp; Use Code: <b>EXAMSTART</b></p>
+        </div>
+    </div>
+
+    <script>
+        function startCountdown(duration, display) {
+            var timer = duration, hours, minutes, seconds;
+            setInterval(function () {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var countdownTime = 60 * 60; // 1 hour countdown
+            var display = document.querySelector('#countdown');
+            startCountdown(countdownTime, display);
+        };
+    </script>
+</body>
+</html>
